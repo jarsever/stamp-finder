@@ -92,8 +92,8 @@ class Screen:
 
         for num, item in enumerate(images):
             if num == self.sy-6 and len(images) > num:
-                self.subwindow.addstr(num+2, self.x/4*2,
-                '{:>22}'.format("....."), self.YELLOWB)
+                self.subwindow.addstr(num+2, self.x-47,
+                '{:>30}'.format("....."), self.YELLOWB)
                 break
             else:
                 self.subwindow.addstr(num+2, self.x-47, '{0:>30}  {1:10,} Kb'.format(item,
@@ -117,8 +117,9 @@ class Screen:
             self.screen.addstr(self.y/2-y_val, 3, "| {0} |".format(num),
                 self.graphics[num])
             self.screen.addstr(self.y/2-y_val, 9, item, self.BLUEW)
+	self.screen.addstr(self.sy+1, self.x/2-11, ' STAMP-FINDER v0.1.0 ', self.BLUEW | curses.A_STANDOUT)
         if os.getuid() != 0:
-            self.screen.addstr(self.y-1, self.x/2-30,
+            self.screen.addstr(self.y-2, self.x/2-30,
                 ' Warning! You are not running as \'ROOT\'. Running as {!r} '.format(str(os.getlogin())),
                 self.REDW | curses.A_BOLD | curses.A_STANDOUT)
 
