@@ -47,8 +47,7 @@ class Data:
     def set_image_list(self):
         self.image_list = []
         for f in self.file_list:
-            x = Image(f)
-            self.image_list.append(x)
+            self.image_list.append(Image(f))
 
     def set_path(self, path):
         self.path = path

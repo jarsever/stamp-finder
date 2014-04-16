@@ -86,7 +86,6 @@ class Screen:
         self.subwindow.box()
         self.subwindow.addstr(0, self.x/2-6, "| SETTINGS |")
         self.subwindow.addstr(1, self.x-15, "FILES", self.GREENB | curses.A_UNDERLINE)
-        self.subwindow.addstr(self.sy-3, self.x/2-6, "{0}".format(then), self.CYANB)
         self.subwindow.addstr(self.sy-2, self.x/2-14, "{0} {1}".format(now.strftime("%a %b %d, %Y"),
             now.strftime("%I:%M:%S %p")), self.CYANB)
 
