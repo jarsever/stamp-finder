@@ -1,26 +1,10 @@
 SFINDER
 =======
 
-[NAME](#NAME)\
- [SYNOPSIS](#SYNOPSIS)\
- [DESCRIPTION](#DESCRIPTION)\
- [OPTIONS](#OPTIONS)\
- [FILES](#FILES)\
- [ENVIRONMENT](#ENVIRONMENT)\
- [AUTHOR](#AUTHOR)\
-
-* * * * *
-
-NAME
-----
-
-sfinder − raw data timestamp search utility
-
 SYNOPSIS
 --------
 
-**sfinder [-h] [-q] [-E** *epoch* **] [-s** *start\_date* **] [-e**
-*end\_date* **] [-l] [-p** *path* **]**
+`sfinder [-h] [-q] [-E *epoch* ] [-s *start\_date* ] [-e *end\_date* ] [-l] [-p *path* ]**`
 
 DESCRIPTION
 -----------
@@ -37,80 +21,65 @@ integrity.
 OPTIONS
 -------
 
--h
+`-h`
+	Show the help message and exit.
 
-Show the help message and exit.
+`-q`
+	Quit Mode. Run *sfinder* without hashing files to speed up processing.
 
--q
+`-E *epoch*`
+	Set the epoch origin date for the filesystem the image or file was
+	created. Formatting: ’YYYY,MM,DD’
 
-Quit Mode. Run *sfinder* without hashing files to speed up processing.
+`-s *start\_date*`
+	The date you want the search to start at. All timestamps before this
+	date will be disregarded. Can be set down to seconds but requires at
+	least the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
 
--E epoch
+`-e end\_date`
+	The date you want the search to stop at. All timestamps after this date
+	will be disregarded. Can be set down to seconds but requires at least
+	the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
 
-Set the epoch origin date for the filesystem the image or file was
-created. Formatting: ’YYYY,MM,DD’
+`-l`
+	Search for timestimps in ’Little Endian’ format *(cd ab)* instead of the
+	normal ’Big Endian’ format *(ab cd).*
 
--s start\_date
-
-The date you want the search to start at. All timestamps before this
-date will be disregarded. Can be set down to seconds but requires at
-least the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
-
--e end\_date
-
-The date you want the search to stop at. All timestamps after this date
-will be disregarded. Can be set down to seconds but requires at least
-the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
-
--l
-
-Search for timestimps in ’Little Endian’ format *(cd ab)* instead of the
-normal ’Big Endian’ format *(ab cd).*
-
--p path
-
-The path to the file or directory you want *sfinder* to scan. If it is a
-directory, all files in the directory will be processed.
+`-p path`
+	The path to the file or directory you want *sfinder* to scan. If it is a
+	directory, all files in the directory will be processed.
 
 FILES
 -----
 
 *\~/sfinder\_OUT/*
-
-The directory containing the output of hashes and timestamp data.
+	The directory containing the output of hashes and timestamp data.
 
 *\~/sfinder.log*
-
-Log file of errors and program run information.
+	Log file of errors and program run information.
 
 */opt/sfinder/*
-
-Directory where the source code is located at.
+	Directory where the source code is located at.
 
 ENVIRONMENT
 -----------
 
 The following are the defaults set when running *sfinder*
 
--E
+`-E`
+	Default *epoch* is ’1970,1,1’
 
-Default *epoch* is ’1970,1,1’
+`-s`
+	Default *start\_date* is one(1) year ago from today.
 
--s
+`-e`
+	Default *end\_date* is today’s date.
 
-Default *start\_date* is one(1) year ago from today.
+`-l`
+	Default is *False* and will run as ’Big Endian’.
 
--e
-
-Default *end\_date* is today’s date.
-
--l
-
-Default is *False* and will run as ’Big Endian’.
-
--p
-
-Default is the currenty directory *sfinder* is being run in.
+`-p`
+	Default is the currenty directory *sfinder* is being run in.
 
 AUTHOR
 ------
