@@ -21,15 +21,15 @@ integrity.
 OPTIONS
 -------
 
-> -h
+> `-h`
 >> Show the help message and exit.
 
-`-q`
-Quit Mode. Run *sfinder* without hashing files to speed up processing.
+> `-q`
+>> Quit Mode. Run *sfinder* without hashing files to speed up processing.
 
-`-E *epoch*`
-&nbsp;&nbsp;&nbsp;&nbsp;Set the epoch origin date for the filesystem the image or file was
-&nbsp;&nbsp;&nbsp;&nbsp;created. Formatting: ’YYYY,MM,DD’
+> `-E *epoch*`
+>> Set the epoch origin date for the filesystem the image or file was
+>> created. Formatting: ’YYYY,MM,DD’
 
 `-s *start\_date*`
 &nbsp;&nbsp;&nbsp;&nbsp;The date you want the search to start at. All timestamps before this
