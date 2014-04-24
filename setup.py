@@ -32,6 +32,7 @@ if conf in ('Y', 'y', 'yes', 'Yes', ''):
 		pass
 
 	os.system('rm -r {0}/sfinder/'.format(cwd))
+	os.system('rm /opt/sfinder/sfinder.1.gz'.format(cwd))
 		
 	print "\n[INFO] Source located at: /opt/sfinder"
 	print "[INFO] 'sfinder' manual page installed."
