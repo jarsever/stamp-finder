@@ -18,19 +18,10 @@ if conf in ('Y', 'y', 'yes', 'Yes', ''):
 	os.system('chmod 0644 {0}/sfinder/src/data.py'.format(cwd))
 	os.system('chmod 0655 {0}/sfinder/sfinder.py'.format(cwd))
 	os.system('chmod 0644 {0}/sfinder/sfinder.1.gz'.format(cwd))
-
-	try:
-		os.system('cp {0}/sfinder/sfinder.1.gz /usr/share/man/man1/'.format(cwd))
-	except:
-		pass
-
+	os.system('cp {0}/sfinder/sfinder.1.gz /usr/share/man/man1/'.format(cwd))
 	os.system('cp -r sfinder/ /opt/')
-
-	try:
-		os.system('ln -s /opt/sfinder/src/sfinder.py /usr/local/bin/sfinder')
-	except:
-		pass
-
+	os.system('ln -s /opt/sfinder/src/sfinder.py /usr/local/bin/sfinder')
+	os.system('chmod 0655 /usr/local/bin/sfinder')
 	os.system('rm -r {0}/sfinder/'.format(cwd))
 	os.system('rm /opt/sfinder/sfinder.1.gz'.format(cwd))
 		
