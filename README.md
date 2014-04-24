@@ -22,6 +22,7 @@ OPTIONS
 -------
 
 `-h`
+
   Show the help message and exit.
 
 `-q`
