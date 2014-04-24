@@ -4,7 +4,7 @@ SFINDER
 SYNOPSIS
 --------
 
-`sfinder [-h] [-q] [-E *epoch* ] [-s *start\_date* ] [-e *end\_date* ] [-l] [-p *path* ]**`
+`sfinder [-h] [-q] [-E epoch ] [-s start\_date ] [-e end\_date ] [-l] [-p path ]`
 
 DESCRIPTION
 -----------
@@ -27,7 +27,7 @@ OPTIONS
 > `-q`
 >> Quit Mode. Run *sfinder* without hashing files to speed up processing.
 
-> `-E *epoch*`
+> `-E _epoch_`
 >> Set the epoch origin date for the filesystem the image or file was
 >> created. Formatting: ’YYYY,MM,DD’
 
