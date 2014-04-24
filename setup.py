@@ -20,11 +20,6 @@ if conf in ('Y', 'y', 'yes', 'Yes', ''):
 	os.system('chmod 0644 {0}/sfinder/sfinder.1.gz'.format(cwd))
 
 	try:
-		os.system('rm {0}/sfinder/src/*.pyc'.format(cwd))
-	except:
-		pass
-
-	try:
 		os.system('cp {0}/sfinder/sfinder.1.gz /usr/share/man/man1/'.format(cwd))
 	except:
 		pass
