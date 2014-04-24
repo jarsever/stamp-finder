@@ -21,11 +21,11 @@ integrity.
 OPTIONS
 -------
 
-`-h`\n
-Show the help message and exit.
+> -h
+>> Show the help message and exit.
 
 `-q`
-&nbsp;&nbsp;&nbsp;&nbsp;Quit Mode. Run *sfinder* without hashing files to speed up processing.
+Quit Mode. Run *sfinder* without hashing files to speed up processing.
 
 `-E *epoch*`
 &nbsp;&nbsp;&nbsp;&nbsp;Set the epoch origin date for the filesystem the image or file was
