@@ -32,12 +32,12 @@ OPTIONS
 > Set the epoch origin date for the filesystem the image or file was
 > created. Formatting: ’YYYY,MM,DD’
 
-`-s *start\_date*`
+`-s *start_date*`
 > The date you want the search to start at. All timestamps before this
 > date will be disregarded. Can be set down to seconds but requires at
 > least the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
 
-`-e end\_date`
+`-e end_date`
 > The date you want the search to stop at. All timestamps after this date
 > will be disregarded. Can be set down to seconds but requires at least
 > the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
@@ -53,10 +53,10 @@ OPTIONS
 FILES
 -----
 
-`\~/sfinder\_OUT/`
+`~/sfinder_OUT/`
 > The directory containing the output of hashes and timestamp data.
 
-`\~/sfinder.log`
+`~/sfinder.log`
 > Log file of errors and program run information.
 
 `/opt/sfinder/`
@@ -71,10 +71,10 @@ The following are the defaults set when running *sfinder*
 > Default *epoch* is ’1970,1,1’
 
 `-s`
-> Default *start\_date* is one(1) year ago from today.
+> Default *start_date* is one(1) year ago from today.
 
 `-e`
-> Default *end\_date* is today’s date.
+> Default *end_date* is today’s date.
 
 `-l`
 > Default is *False* and will run as ’Big Endian’.
