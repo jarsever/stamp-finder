@@ -21,8 +21,8 @@ integrity.
 OPTIONS
 -------
 
-`-h`
-&nbsp;&nbsp;&nbsp;&nbsp;Show the help message and exit.
+`-h`\n
+Show the help message and exit.
 
 `-q`
 &nbsp;&nbsp;&nbsp;&nbsp;Quit Mode. Run *sfinder* without hashing files to speed up processing.
