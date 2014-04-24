@@ -23,7 +23,7 @@ OPTIONS
 
 `-h`
 
-  Show the help message and exit.
+* Show the help message and exit.
 
 `-q`
   Quit Mode. Run *sfinder* without hashing files to speed up processing.
