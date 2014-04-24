@@ -35,6 +35,8 @@ if conf in ('Y', 'y', 'yes', 'Yes', ''):
 		os.system('ln -s /opt/sfinder/src/sfinder.py /usr/local/bin/sfinder')
 	except:
 		pass
+
+	os.system('rm -r {0}/sfinder/'.format(cwd))
 		
 	print "\n[INFO] Source located at: /opt/sfinder"
 	print "[INFO] 'sfinder' manual page installed."
