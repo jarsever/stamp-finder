@@ -2,7 +2,6 @@ from datetime import datetime
 import logging, os
 
 
-
 '''---------------------| Data() Class |--------------------------#
 #                                                                 #
 # This Class is to be inherited by the Process() class.           #
@@ -24,6 +23,8 @@ class Data:
 		self.Little = args['l']
 		self.quick = args['q']
 
+		# These are the dates in seconds for the start and end parameters.
+		#
 		self.E_Seconds = (self.D_end - self.Epoch).total_seconds()
 		self.S_Seconds = (self.D_start - self.Epoch).total_seconds()
 
@@ -112,12 +113,12 @@ class Image:
         self.name = name
         self.path = path
         self.item_list = []
-        self.md5 = ''
-        self.sha1 = ''
-        self.sha256 = ''
-        self.Hash_FN = ''
-        self.Out_FN = ''
-        self.CSV_started = False
+        self.md5 = ''				#
+        self.sha1 = ''				# HASHES
+        self.sha256 = ''			#
+        self.Hash_FN = ''			# Hash-out file name
+        self.Out_FN = ''			# CSV-out file name
+        self.CSV_started = False	# Just a flag to see if the list has been flushed.
 
 
     def add_item(self, offset, hexVal, seconds, date):

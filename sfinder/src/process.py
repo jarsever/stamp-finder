@@ -12,9 +12,10 @@ class Process(Data):
 		logging.info('==================> Started Stamp-Finder <==================')
 		Data.__init__(self, args)
 
+		# See if a quick run is wanted.
 		if not self.quick:
 			Q = raw_input('\nDo you want to skip Hashing for faster run? [yN] ')
-			if Q in ('y', 'Y'):
+			if Q == ('y' or 'Y'):
 				self.quick = True
 
 		self.create_files()
@@ -30,6 +31,9 @@ class Process(Data):
 		return
 
 
+	# Loop over list and create the hashes that will be recordered
+	# and compared later to verify nothing changed.
+	#
 	def Main_hash(self, final=False):
 
 		for image in self.image_list:
@@ -50,6 +54,12 @@ class Process(Data):
 			self.writeHashes(image, hashes, final)
 
 
+
+	# Create the files needed for the ouput. If the scan is on a directory
+	# each file will then have it's own directory to store files. Files
+	# will also increment by one(1) if there are already files in the
+	# directory.
+	#
 	def create_files(self):
 		home = "{0}/sfinder".format(os.path.expanduser('~'))
 		today = "{0}/{1}".format(home, datetime.now().strftime('%m-%d-%Y'))
@@ -70,32 +80,37 @@ class Process(Data):
 				os.makedirs(curr_dir)
 
 		for image in self.image_list:
-			local_home = "{0}/{1}".format(today if not os.path.isdir(self.path) else curr_dir,
-				image.name)
 
-			if not os.path.exists(local_home):
-				os.makedirs(local_home)
+			# Check and make sure the file is readable or not.
+			# Create the folder and files if it is readable.
+			#
+			if os.access(image.path, os.R_OK):
+				local_home = "{0}/{1}".format(today if not os.path.isdir(self.path) else curr_dir,
+					image.name)
 
-			num = len(glob1(local_home, '*{0}_OUT*'.format(image.name)))
+				if not os.path.exists(local_home):
+					os.makedirs(local_home)
 
-			if not self.quick:
-				image.Hash_FN = '{0}/{1:02d}-{2}{3}.txt'.format(local_home, num+1, image.name, '_HASH')
-				hf = open(image.Hash_FN, 'w')
-				hf.close()
+				num = len(glob1(local_home, '*{0}_OUT*'.format(image.name)))
 
-			image.Out_FN = '{0}/{1:02d}-{2}{3}.csv'.format(local_home, num+1, image.name, '_OUT')
-			of = open(image.Out_FN, 'w')
-			of.close()
+				if not self.quick:
+					image.Hash_FN = '{0}/{1:02d}-{2}{3}.txt'.format(local_home, num+1, image.name, '_HASH')
+					hf = open(image.Hash_FN, 'w')
+					hf.close()
+
+				image.Out_FN = '{0}/{1:02d}-{2}{3}.csv'.format(local_home, num+1, image.name, '_OUT')
+				of = open(image.Out_FN, 'w')
+				of.close()
 
 
-	def hash_all(self, path):
+	def hash_all(self, path):	# Hashing function.
 		hashes = []
 		with open(path, 'rb') as f:
 			h = hashlib.md5()
 			s1 = hashlib.sha1()
 			s256 = hashlib.sha256()
 			while True:
-				data = f.read(8192)
+				data = f.read(8192)		# Read in buffer to acommodate large files.
 				if not data:
 					break
 				h.update(data)
@@ -108,7 +123,7 @@ class Process(Data):
 			return hashes
 
 
-	def writeHashes(self, image, hashes, final):
+	def writeHashes(self, image, hashes, final):	# Function to write the hashes to file.
 
 		with open(image.Hash_FN, 'ab') as f:
 
@@ -142,6 +157,13 @@ class Process(Data):
 			f.close()
 
 
+
+	# This is the most complicated function in this program. It will loop over
+	# all of the images and search one byte at a time for timestamps. Because
+	# Python doesn't truly read files as binary, we need to convert it to binary
+	# and then a base 10 number. Search parameters should be very specific in
+	# order to reduce the number of dates found.
+	#
 	def sfinder(self):
 
 		E_Seconds = (self.D_end - self.Epoch).total_seconds()
@@ -160,6 +182,9 @@ class Process(Data):
 				print '[INFO] PROCESSING: ', image.name
 				logging.info('STARTED timestamp search for: {0}'.format(image.name))
 
+
+				# This is the progress bar that is displayed.
+				#
 				widgets = [' ', ETA(), ' ', Bar(marker='#', left='[', right=']'), ' ', Percentage(), ' ',
 					'(', FileTransferSpeed(), ' )']
 				pbar = ProgressBar(widgets=widgets, maxval=os.stat(name).st_size)
@@ -245,7 +270,10 @@ class Process(Data):
 				logging.error(e)
 
 
-
+	# This function is called when the 'item' list needs to be
+	# flushed to reduce size or to finish an image after
+	# processing.
+	#
 	def writeCSV(self, image):
 
 		f = open(image.Out_FN, 'ab')
