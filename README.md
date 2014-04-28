@@ -32,7 +32,7 @@ OPTIONS
 > Set the epoch origin date for the filesystem the image or file was
 > created. Formatting: ’YYYY,MM,DD’
 
-`-s *start_date*`
+`-s start_date`
 > The date you want the search to start at. All timestamps before this
 > date will be disregarded. Can be set down to seconds but requires at
 > least the YYYY, MM, and DD to be set. Formatting: ’YYYY,MM,DD,HH,mm,ss’
