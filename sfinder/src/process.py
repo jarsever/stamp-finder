@@ -278,7 +278,7 @@ class Process(Data):
 
 		f = open(image.Out_FN, 'ab')
 		if not image.CSV_started:
-			f.write('"OFFSET","HEX VALUE","ENDIAN","DATE","FROM LAST"\n')
+			f.write('"OFFSET","HEX VALUE","DATE","FROM LAST"\n')
 			image.CSV_started = True
 
 		for item in image.item_list:
